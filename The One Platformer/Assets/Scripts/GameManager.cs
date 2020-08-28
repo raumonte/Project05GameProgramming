@@ -5,6 +5,11 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
+    public GameObject playerPf;
+    public GameObject playerPawn;
+    public GameObject enemyPawn;
+    public int enemyHp;
+    public int playerHp;
     public int points;              // This int variable is used to store the amount of points that the player can get.
     public int lifePoints;         // This in variable is used to tell the current life points.
     public int setLives;          // This int variable is used for a designer set of maximum player lives.
@@ -30,7 +35,7 @@ public class GameManager : MonoBehaviour
     {
         //When the game starts it will set the checkpoint at the origin.
         checkpoint = new Vector3(0, 0, 0);
-        // It sets the variable of setLives to the amount of lifePoints.
+        //It sets the variable of setLives to the amount of lifePoints.
         instance.setLives = instance.lifePoints;
     }
 
@@ -39,15 +44,38 @@ public class GameManager : MonoBehaviour
     {
         
     }
+    public void enemyDamage()
+    {
+        if(enemyHp > 0)
+        {
+            enemyHp--;
+        }
+        else
+        {
+            Destroy(enemyPawn);
+        }
+    }
+    public void playerDamage()
+    {
+        if(playerHp > 0)
+        {
+            playerHp--;
+        }
+        else
+        {
+            playerDeath();
+        }   
+    }
     public void playerDeath()
     {
         if (lifePoints > 0)
         {
-
+            lifePoints--;
+            Instantiate(playerPf, checkpoint, playerPf.transform.rotation);
         }
         else
         {
-
+            Destroy(playerPawn);
         }
     }
 }
