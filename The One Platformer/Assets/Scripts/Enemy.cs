@@ -7,7 +7,7 @@ public class Enemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        GameManager.instance.enemyPawn = this.gameObject;
     }
 
     // Update is called once per frame
@@ -15,4 +15,12 @@ public class Enemy : MonoBehaviour
     {
         
     }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+            if (collision.gameObject.CompareTag("Player"))
+        {
+            GameManager.instance.enemyDamage();
+        }
+    }
+
 }
