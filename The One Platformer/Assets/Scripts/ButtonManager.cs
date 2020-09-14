@@ -17,4 +17,8 @@ public class ButtonManager : MonoBehaviour
     {
         SceneManager.LoadScene("Prototype");
     }
+    public void MainMenu()
+    {
+        SceneManager.LoadScene("Main Menu");
+    }
 }
