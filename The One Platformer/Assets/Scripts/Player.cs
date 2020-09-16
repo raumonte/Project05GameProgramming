@@ -70,7 +70,7 @@ public class Player : MonoBehaviour
     }
     public bool IsGrounded()
     {
-        RaycastHit2D hitinfo = Physics2D.Raycast(transform.position, Vector2.down, (heightOfCharacter / 1f) + 0.1f);
+        RaycastHit2D hitinfo = Physics2D.Raycast(transform.position, Vector2.down, (heightOfCharacter / 2f) + 0.1f);
         return (hitinfo.collider != null);        
     }
     /*private void OnDrawGizmosSelected()
