@@ -43,17 +43,38 @@ public class Player : MonoBehaviour
 
         if (Input.GetButtonDown("Jump"))
         {
-            if (currentSetJumps > 0)
-            {
-                Jumping();
-            }
             if (IsGrounded())
             {
                 currentSetJumps = setMaxJumps;
                 Debug.Log("Is Grounded");
             }
+            if (currentSetJumps > 0)
+            {
+                Jumping();
+            }
         }
-        
+
+
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Checkpoint"))
+        {
+            GameManager.instance.checkpoint = transform.position;
+            Debug.Log("Screams again");
+        }
+       
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Out of Bounds"))
+        {
+            GameManager.instance.playerDeath();
+            Debug.Log("Scream in pain");
+        }
+    }
+    private void OnCollisionExit2D(Collision2D collision)
+    {
         
     }
     public void Attack()
@@ -70,11 +91,18 @@ public class Player : MonoBehaviour
     }
     public bool IsGrounded()
     {
-        RaycastHit2D hitinfo = Physics2D.Raycast(transform.position, Vector2.down, (heightOfCharacter / 2f) + 0.1f);
-        return (hitinfo.collider != null);        
+        //// Get the layers for the Out of Bounds box and the Player
+        //int layerMask = 1 << LayerMask.NameToLayer("Out of Bounds") | 1 << LayerMask.NameToLayer("Player");
+
+        //// Invert the layer mask to get every layer except for those two.
+        //layerMask = ~layerMask;
+
+        // Instead, we should just be paying attention to the one layer we want, instead of ignoring every other one.
+        int layerMask = 1 << LayerMask.NameToLayer("Ground");
+
+        // Shoot a raycast just below our characters feet only viewing things within our layer mask (not the player or bounds box).
+        RaycastHit2D hitinfo = Physics2D.Raycast(transform.position, Vector2.down, (heightOfCharacter / 1f), layerMask);
+
+        return (hitinfo.collider != null);
     }
-    /*private void OnDrawGizmosSelected()
-    {
-        Gizmos.DrawRay(playerRigidbody.position, IsGrounded);
-    }*/
 }

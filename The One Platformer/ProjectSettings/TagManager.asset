@@ -7,6 +7,7 @@ TagManager:
   - Enemy
   - Checkpoint
   - PowerUp
+  - Out of Bounds
   layers:
   - Default
   - TransparentFX
@@ -16,9 +17,9 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
+  - Out of Bounds
+  - Player
+  - Ground
   - 
   - 
   - 

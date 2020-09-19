@@ -34,7 +34,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         //When the game starts it will set the checkpoint at the origin.
-        checkpoint = new Vector3(0, 0, 0);
+        checkpoint = new Vector3(0,0,0);
         //It sets the variable of setLives to the amount of lifePoints.
         instance.setLives = instance.lifePoints;
     }
@@ -72,6 +72,7 @@ public class GameManager : MonoBehaviour
         {
             lifePoints--;
             Instantiate(playerPf, checkpoint, playerPf.transform.rotation);
+            Destroy(playerPawn);
         }
         else
         {
