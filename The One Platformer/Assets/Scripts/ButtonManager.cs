@@ -48,6 +48,8 @@ public class ButtonManager : MonoBehaviour
     public void ResetLevelGM()
     {
         SceneManager.LoadScene("Prototype");
+        GameManager.instance.setLives += 3;
+        GameManager.instance.setLives = GameManager.instance.lifePoints;
     }
     public void MainMenu()
     {

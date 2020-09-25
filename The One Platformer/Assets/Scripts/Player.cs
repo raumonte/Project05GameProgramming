@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
     public int currentSetJumps;          //This will be used to set the maximum to ristrict the amount of jumps to the player.
     public float heightOfCharacter = 1.8f;      //This will be used to get the exact hight of the player sprite.
     public float speed = 3f;             //This is to set the tright amount for the speed of the player.
+    public bool IsSprinting;
     public float jumpForce = 5f;
     // Start is called before the first frame update
     void Start()
@@ -19,6 +20,7 @@ public class Player : MonoBehaviour
         playerSprite = GetComponent<SpriteRenderer>();     //When the game begins it should set the variable for the sprite renderer to the sprite renderer on the player.
         playerAnimation = GetComponent<Animator>();        //When the game begins the variable should be set to the component of the animator.
         GameManager.instance.playerPawn = this.gameObject; //Player pawn from the game manager should be set to this game object.
+        IsSprinting = false;
         currentSetJumps = setMaxJumps;
     }
 
@@ -53,17 +55,18 @@ public class Player : MonoBehaviour
                 Jumping();
             }
         }
-
-
-    }
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("Checkpoint"))
+        if (Input.GetKey(KeyCode.LeftShift) && IsSprinting == false)
         {
-            GameManager.instance.checkpoint = transform.position;
-            Debug.Log("Screams again");
+            IsSprinting = true;
+
+            speed *= 2;
         }
-       
+        else if (Input.GetKeyUp(KeyCode.LeftShift) && IsSprinting == true)
+        {
+            IsSprinting = false;
+            speed /= 2;
+        }
+
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
@@ -105,4 +108,5 @@ public class Player : MonoBehaviour
 
         return (hitinfo.collider != null);
     }
+    
 }
