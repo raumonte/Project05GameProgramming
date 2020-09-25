@@ -14,13 +14,15 @@ public class ButtonManager : MonoBehaviour
     private Text goofText;
     // }
 
+    //this it 
     public void OnApplicationQuit()
     {
         Application.Quit();
     }
+    //This function goes to the next scene in the build index.
     public void NextScene(Button button)
     {
-        // Goof {
+        /* Goof {
         goofText = button.GetComponentInChildren<Text>();
         if (goofCount == 0)
         {
@@ -41,16 +43,18 @@ public class ButtonManager : MonoBehaviour
         }
 
         goofCount++;
-        // }
+        }*/
 
-        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
+    //This function is used to go back to the previous level.
     public void ResetLevelGM()
     {
         SceneManager.LoadScene("Prototype");
         GameManager.instance.setLives += 3;
         GameManager.instance.setLives = GameManager.instance.lifePoints;
     }
+    //Then this function will load back to the main menu.
     public void MainMenu()
     {
         SceneManager.LoadScene("Main Menu");
@@ -59,7 +63,7 @@ public class ButtonManager : MonoBehaviour
     // Goof {
     void Update()
     {
-        if (isGoofing)
+        /*if (isGoofing)
         {
             goofTimeLeft -= Time.deltaTime;
         }
@@ -82,6 +86,6 @@ public class ButtonManager : MonoBehaviour
             UnityEditor.EditorApplication.isPlaying = false;
         }
 
-    }
+    }*/
     // }
 }

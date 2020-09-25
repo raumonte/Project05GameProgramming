@@ -27,22 +27,27 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //This will get the movement of the player and move on the x-axis when the button for the horizontal axis is pressed.
         float xMovement = Input.GetAxis("Horizontal")* speed * Time.deltaTime;
+        //This will get the rigidbody of the player and sets up the velocity of the playerr.
         playerRigidbody.velocity = new Vector3(xMovement, playerRigidbody.velocity.y);
-        if (Input.GetKeyDown(KeyCode.F))
+        /*if (Input.GetKeyDown(KeyCode.F))
         {
             Attack();
-        }
+        }*/
+        // When the player is moving on any axis it will play the animation for walking.
         if (playerRigidbody.velocity.x != 0)
         {
             playerAnimation.Play("PlayerWalk");
         }
+        //if the player doesn't move on the x axis or at all it will play its idle animation.
         else
         {
             playerAnimation.Play("PlayerIdle");
         }
+        //Whenever the player moves it will flip it depending on the axis it is walking in.
         playerSprite.flipX = playerRigidbody.velocity.x < 0;
-
+        //When the player presses the Jump button it will give the player the choice to move on the y-axis aka jumping.
         if (Input.GetButtonDown("Jump"))
         {
             if (IsGrounded())
@@ -55,12 +60,14 @@ public class Player : MonoBehaviour
                 Jumping();
             }
         }
+        //It will check if sprinting is false when pressing the left shift button. Once it is being pressed it will double the speed than normal.
         if (Input.GetKey(KeyCode.LeftShift) && IsSprinting == false)
         {
             IsSprinting = true;
 
             speed *= 2;
         }
+        //Once it sees that it has been set true it will set it back to false so it can return the amount of speed back to it was.
         else if (Input.GetKeyUp(KeyCode.LeftShift) && IsSprinting == true)
         {
             IsSprinting = false;
@@ -68,6 +75,7 @@ public class Player : MonoBehaviour
         }
 
     }
+    //When the player exits the play area they will activate their death function.
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Out of Bounds"))
@@ -76,22 +84,20 @@ public class Player : MonoBehaviour
             Debug.Log("Scream in pain");
         }
     }
-    private void OnCollisionExit2D(Collision2D collision)
-    {
-        
-    }
-    public void Attack()
+   /* public void Attack()
     {
         //This helps the code play the attack animation.
         playerAnimation.SetTrigger("Attack");
         //Then it will detect the enemy depending on the range of the attack
         //Then it would damage the enemy itself.
-    }
+    }*/
+   //Whenever the player jumps it will add force to their jump and subtract the amount of set jumps. 
     void Jumping()
     {
         currentSetJumps--;
         playerRigidbody.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
     }
+    //It will check if it is grounded.
     public bool IsGrounded()
     {
         //// Get the layers for the Out of Bounds box and the Player
