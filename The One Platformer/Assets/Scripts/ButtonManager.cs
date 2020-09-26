@@ -8,10 +8,10 @@ using UnityEngine.UI;
 public class ButtonManager : MonoBehaviour
 {
     // Nonsense Variables {
-    private int goofCount = 0;
-    private float goofTimeLeft = 7f;
-    private bool isGoofing = false;
-    private Text goofText;
+    //private int goofCount = 0;
+    //private float goofTimeLeft = 7f;
+    //private bool isGoofing = false;
+    //private Text goofText;
     // }
 
     //this it 
@@ -87,5 +87,5 @@ public class ButtonManager : MonoBehaviour
         }
 
     }*/
-    // }
+    }
 }

@@ -149,6 +149,7 @@ MonoBehaviour:
   currentSetJumps: 0
   heightOfCharacter: 1.8
   speed: 600
+  IsSprinting: 0
   jumpForce: 5
 --- !u!95 &868265568277600794
 Animator:
@@ -182,6 +183,6 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0015974045, y: -0.7578231}
+  m_Offset: {x: 0.022987366, y: -0.6243628}
   serializedVersion: 2
-  m_Radius: 0.32472134
+  m_Radius: 0.5108638

@@ -9,12 +9,12 @@ EditorBuildSettings:
     path: Assets/Scenes/Main Menu.unity
     guid: dbb1f73d8e64f5f48b087e29ff2908a9
   - enabled: 1
-    path: Assets/Scenes/Game Over.unity
-    guid: 4d280c051c4eac4469cb75f6dae62724
+    path: Assets/Scenes/Prototype.unity
+    guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
     path: Assets/Scenes/Victory.unity
     guid: 08a1243741097ab4784ed47ee39e2c20
   - enabled: 1
-    path: Assets/Scenes/Prototype.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
+    path: Assets/Scenes/Game Over.unity
+    guid: 4d280c051c4eac4469cb75f6dae62724
   m_configObjects: {}

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CoinPickup : MonoBehaviour
 {
+    public AudioClip collectSound;
     //Once the player hits the gem it will add points and destroy the object.
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -11,6 +12,7 @@ public class CoinPickup : MonoBehaviour
         {
             Destroy(this.gameObject);
             GameManager.instance.points += 100;
+            AudioSource.PlayClipAtPoint(collectSound, transform.position);
         }
     }
 }
