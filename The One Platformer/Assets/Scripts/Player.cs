@@ -31,10 +31,10 @@ public class Player : MonoBehaviour
         float xMovement = Input.GetAxis("Horizontal")* speed * Time.deltaTime;
         //This will get the rigidbody of the player and sets up the velocity of the playerr.
         playerRigidbody.velocity = new Vector3(xMovement, playerRigidbody.velocity.y);
-        /*if (Input.GetKeyDown(KeyCode.F))
+        if (Input.GetKeyDown(KeyCode.F))
         {
             Attack();
-        }*/
+        }
         // When the player is moving on any axis it will play the animation for walking.
         if (playerRigidbody.velocity.x != 0)
         {
@@ -84,13 +84,13 @@ public class Player : MonoBehaviour
             Debug.Log("Scream in pain");
         }
     }
-   /* public void Attack()
+   public void Attack()
     {
         //This helps the code play the attack animation.
         playerAnimation.SetTrigger("Attack");
         //Then it will detect the enemy depending on the range of the attack
         //Then it would damage the enemy itself.
-    }*/
+    }
    //Whenever the player jumps it will add force to their jump and subtract the amount of set jumps. 
     void Jumping()
     {
